@@ -4,12 +4,8 @@ Checks provided password against `pwndpasswords` API database to determine if pa
 
 # Code Example
 
-To run the project, enter the name of the script in the command line followed by the password(s) you want to check
+To run the project, enter the name of the script in the command line followed by the file containing password(s) you want to check
 
 ```
-python3 checkmypass hello
-```
-
-```
-python3 checkmypass pass1 pass2
+python3 checkmypass input.txt
 ```

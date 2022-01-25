@@ -1,6 +1,6 @@
+import sys
 import hashlib
 import requests
-import sys
 
 
 def request_api_data(query_char):
@@ -25,15 +25,6 @@ def pwnd_api_check(password):
     response = request_api_data(first_5_char)
     return get_leaks_count(response, tail)
 
-
-# def main(args):
-#     for password in args:
-#         count = pwnd_api_check(password)
-#         if count:
-#             print(f'{password} was found {count} times')
-#         else:
-#             print(f'{password} was NOT found')
-#     return 'done'
 
 def main(input_file):
     try:
