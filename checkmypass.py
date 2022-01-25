@@ -26,15 +26,31 @@ def pwnd_api_check(password):
     return get_leaks_count(response, tail)
 
 
-def main(args):
-    for password in args:
-        count = pwnd_api_check(password)
-        if count:
-            print(f'{password} was found {count} times')
-        else:
-            print(f'{password} was NOT found')
-    return 'done'
+# def main(args):
+#     for password in args:
+#         count = pwnd_api_check(password)
+#         if count:
+#             print(f'{password} was found {count} times')
+#         else:
+#             print(f'{password} was NOT found')
+#     return 'done'
+
+def main(input_file):
+    try:
+        with open(input_file, mode="r") as in_file:
+            text = in_file.read()
+            passwords = (password for password in text.split())
+            for password in passwords:
+                count = pwnd_api_check(password)
+                if count:
+                    print(f'{password} was found {count} times')
+                else:
+                    print(f'{password} was NOT found')
+            return 'done'
+
+    except FileNotFoundError as err:
+        print("File does not exist in directory")
 
 
 if __name__ == '__main__':
-    main(sys.argv[1:])
+    main(sys.argv[1])
